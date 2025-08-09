@@ -1,16 +1,22 @@
-## Theodicean.SourceGenerators
+# Theodicean.SourceGenerators
+
+[![Release](https://img.shields.io/github/actions/workflow/status/henrikwidlund/unfoldedcircle-adbtv/github-release.yml?label=Release&logo=github)](https://github.com/henrikwidlund/theodicean.sourcegenerators/actions/workflows/github-release.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/henrikwidlund/theodicean.sourcegenerators/ci.yml?label=CI&logo=github)](https://github.com/henrikwidlund/theodicean.sourcegenerators/actions/workflows/ci.yml)
+![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/henrikwidlund_theodicean.sourcegenerators?server=https%3A%2F%2Fsonarcloud.io&label=Sonar%20Quality%20Gate&logo=sonarqube)
+[![Qodana](https://img.shields.io/github/actions/workflow/status/henrikwidlund/unfoldedcircle-adbtv/qodana_code_quality.yml?branch=main&label=Qodana&logo=github)](https://github.com/henrikwidlund/theodicean.sourcegenerators/actions/workflows/qodana_code_quality.yml)
+[![Version](https://img.shields.io/nuget/v/Theodicean.Makaretu.Dns.Multicast.svg)](https://www.nuget.org/packages/Theodicean.Makaretu.Dns.Multicast)
 
 Source generator for fast, allocation-light System.Text.Json converters for enums, driven by attributes.
 
 Enables serialization/deserialization of arbitrary string tokens for enums (including tokens that are not valid C# identifiers, e.g., values with spaces, hyphens, or starting digits) while avoiding runtime reflection for performance and NativeAOT friendliness.
 
-### Why
+## Why
 
 - **Non-identifier tokens**: Many wire formats use names that aren’t valid C# enum identifiers (e.g., "not-found", "401", "connection refused"). Use `Display(Name = "...")` or `Description("...")` to map those tokens to legal enum members.
 - **Reflection-free and AOT-friendly**: The converter is fully source-generated. No runtime reflection or metadata scanning, making it safe for trimming and NativeAOT.
 - **Performance**: Uses `Utf8JsonReader.CopyString`, `stackalloc`, and `ArrayPool<char>` with ordinal comparisons for low-allocation, fast parsing.
 
-### Install
+## Install
 
 - **Package (project using the generator):**
   - Add a PackageReference to `Theodicean.SourceGenerators`
@@ -40,7 +46,7 @@ Example:
 </Project>
 ```
 
-### What it generates
+## What it generates
 
 Annotate a partial class with `EnumJsonConverterAttribute`, pointing to the enum you want to serialize/deserialize. The generator emits a sealed `JsonConverter<TEnum>` that:
 
@@ -51,7 +57,7 @@ Annotate a partial class with `EnumJsonConverterAttribute`, pointing to the enum
 - **Reflection-free**: No runtime reflection; code is generated at build time.
 - **NativeAOT/Trimming friendly**: Works under trimming and NativeAOT scenarios.
 
-### Usage
+## Usage
 
 1) Define your enum. You can optionally decorate members with `Display(Name = "...")` (or `Description("...")`) to control the serialized string.
 
@@ -97,14 +103,14 @@ new JsonSerializerOptions { Converters = { new ExampleEnumJsonConverter() } }
 NOTE: If you've added the `JsonNumberEnumConverter` to your `JsonSerializerOptions`, the custom converter must be added before `JsonNumberEnumConverter` or the custom converter will not be called.`
 
 
-### Attribute options
+## Attribute options
 
 - **EnumJsonConverter(Type enumType)**: Required. The enum type to generate a converter for.
 - **CaseSensitive (bool)**: Default `false`. If `true`, only exact (ordinal) case matches are accepted when reading JSON.
 - **CamelCase (bool)**: Default `false`. If `PropertyName` is supplied and `CamelCase = true`, the property name included in thrown `JsonException` is camel-cased.
 - **PropertyName (string?)**: If set, included in `JsonException` to identify the logical field name when invalid input is encountered.
 
-### Display/Description name mapping
+## Display/Description name mapping
 
 - If an enum member has `[Display(Name = "VALUE")]`, that string is used for both serialization and deserialization.
 - If no `Display` is present but `[Description("VALUE")]` exists, the description string is used.
@@ -112,11 +118,11 @@ NOTE: If you've added the `JsonNumberEnumConverter` to your `JsonSerializerOptio
 - When `CaseSensitive = false` (default), comparisons use `StringComparison.OrdinalIgnoreCase`.
 - Deserialization of default enum member name will always work, regardless of `Display`/`Description` attributes.
 
-### Example of serialized values
+## Example of serialized values
 
 Given the `ExampleEnum` enum above, JSON will contain strings like `"NONE"`, `"NOT_FOUND"`, etc. If a value is not recognized, a `JsonException` is thrown. When `PropertyName = "error"`, the exception includes that property name for better error messages.
 
-### Limitations
+## Limitations
 
 - **.NET version**: Requires .NET 9 or later to use the generated converters.
 - **System.Text.Json only**: Generates converters specifically for `System.Text.Json`.
