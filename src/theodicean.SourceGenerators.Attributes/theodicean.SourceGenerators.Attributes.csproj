@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
-        <RootNamespace>theodicean.Generators</RootNamespace>
+        <RootNamespace>theodicean.SourceGenerators</RootNamespace>
         <IsTrimmable>false</IsTrimmable>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <IsPackable>false</IsPackable>

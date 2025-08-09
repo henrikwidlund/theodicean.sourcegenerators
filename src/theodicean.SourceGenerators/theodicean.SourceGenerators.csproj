@@ -7,7 +7,6 @@
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <LangVersion>latest</LangVersion>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <RootNamespace>theodicean.Generators</RootNamespace>
 
         <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -37,7 +36,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\theodicean.Generators.Attributes\theodicean.Generators.Attributes.csproj" />
+      <ProjectReference Include="..\theodicean.SourceGenerators.Attributes\theodicean.SourceGenerators.Attributes.csproj" />
     </ItemGroup>
 
     <ItemGroup>

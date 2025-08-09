@@ -1,4 +1,4 @@
-﻿namespace theodicean.Generators;
+﻿namespace theodicean.SourceGenerators;
 
 /// <summary>
 /// Add to enums to indicate that a JsonConverter for the enum should be generated.

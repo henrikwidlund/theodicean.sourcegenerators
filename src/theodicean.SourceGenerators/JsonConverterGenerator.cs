@@ -4,12 +4,12 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 
-namespace theodicean.Generators;
+namespace theodicean.SourceGenerators;
 
 [Generator]
 public class JsonConverterGenerator : IIncrementalGenerator
 {
-    private const string EnumJsonConverterAttribute = "theodicean.Generators.EnumJsonConverterAttribute";
+    private const string EnumJsonConverterAttribute = "theodicean.SourceGenerators.EnumJsonConverterAttribute";
     private const string DisplayAttribute = "System.ComponentModel.DataAnnotations.DisplayAttribute";
     private const string DescriptionAttribute = "System.ComponentModel.DescriptionAttribute";
 
