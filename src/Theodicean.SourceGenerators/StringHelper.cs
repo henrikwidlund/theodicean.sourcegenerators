@@ -1,4 +1,4 @@
-namespace theodicean.SourceGenerators;
+namespace Theodicean.SourceGenerators;
 
 internal static class StringHelper
 {

@@ -12,7 +12,7 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <DebugType>full</DebugType>
         <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
-        <PackageId>theodicean.SourceGenerators</PackageId>
+        <PackageId>Theodicean.SourceGenerators</PackageId>
         <Authors>Henrik Widlund</Authors>
         <Copyright>©2025 Henrik Widlund</Copyright>
         <Title>JsonConverter for Enums</Title>
@@ -36,14 +36,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\theodicean.SourceGenerators.Attributes\theodicean.SourceGenerators.Attributes.csproj" PrivateAssets="All" />
+      <ProjectReference Include="..\Theodicean.SourceGenerators.Attributes\Theodicean.SourceGenerators.Attributes.csproj" PrivateAssets="All" />
     </ItemGroup>
 
     <ItemGroup>
         <None Include="..\..\README.md" Pack="true" PackagePath="\" />
         <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-        <None Include="$(OutputPath)\theodicean.SourceGenerators.Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-        <None Include="$(OutputPath)\theodicean.SourceGenerators.Attributes.dll" Pack="true" PackagePath="lib\netstandard2.0" Visible="false" />
-        <None Include="$(OutputPath)\theodicean.SourceGenerators.Attributes.xml" Pack="true" PackagePath="lib\netstandard2.0" Visible="false" />
+        <None Include="$(OutputPath)\Theodicean.SourceGenerators.Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+        <None Include="$(OutputPath)\Theodicean.SourceGenerators.Attributes.dll" Pack="true" PackagePath="lib\netstandard2.0" Visible="false" />
+        <None Include="$(OutputPath)\Theodicean.SourceGenerators.Attributes.xml" Pack="true" PackagePath="lib\netstandard2.0" Visible="false" />
     </ItemGroup>
 </Project>

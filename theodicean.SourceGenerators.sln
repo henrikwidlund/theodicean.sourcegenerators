@@ -18,11 +18,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{9CD8ED
 		.github\workflows\ci.yml = .github\workflows\ci.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theodicean.SourceGenerators", "src\theodicean.SourceGenerators\theodicean.SourceGenerators.csproj", "{B45903A7-3760-4946-854F-E663E225936E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theodicean.SourceGenerators", "src\Theodicean.SourceGenerators\Theodicean.SourceGenerators.csproj", "{B45903A7-3760-4946-854F-E663E225936E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theodicean.SourceGenerators.Attributes", "src\theodicean.SourceGenerators.Attributes\theodicean.SourceGenerators.Attributes.csproj", "{41598FE0-8E6E-4A7A-BB0E-517069FF0FCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theodicean.SourceGenerators.Attributes", "src\Theodicean.SourceGenerators.Attributes\Theodicean.SourceGenerators.Attributes.csproj", "{41598FE0-8E6E-4A7A-BB0E-517069FF0FCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theodicean.SourceGenerators.Tests", "tests\theodicean.SourceGenerators.Tests\theodicean.SourceGenerators.Tests.csproj", "{1B3FC773-8ED7-4E91-ADE1-6DFD7775B6C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Theodicean.SourceGenerators.Tests", "tests\Theodicean.SourceGenerators.Tests\Theodicean.SourceGenerators.Tests.csproj", "{1B3FC773-8ED7-4E91-ADE1-6DFD7775B6C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

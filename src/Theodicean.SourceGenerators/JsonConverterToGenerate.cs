@@ -1,4 +1,4 @@
-namespace theodicean.SourceGenerators;
+namespace Theodicean.SourceGenerators;
 
 public readonly record struct JsonConverterToGenerate(
     string ConverterType,

@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 
-namespace theodicean.SourceGenerators.Tests;
+namespace Theodicean.SourceGenerators.Tests;
 
 public class JsonConverterGeneratorTests
 {
@@ -12,7 +12,7 @@ public class JsonConverterGeneratorTests
     {
         const string input = """
                              using System.Text.Json.Serialization;
-                             using theodicean.SourceGenerators;
+                             using Theodicean.SourceGenerators;
 
                              namespace MyTestNameSpace
                              {

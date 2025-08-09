@@ -1,4 +1,4 @@
-## theodicean.SourceGenerators
+## Theodicean.SourceGenerators
 
 Source generator for fast, allocation-light System.Text.Json converters for enums, driven by attributes.
 
@@ -13,12 +13,12 @@ Enables serialization/deserialization of arbitrary string tokens for enums (incl
 ### Install
 
 - **Package (project using the generator):**
-  - Add a PackageReference to `theodicean.SourceGenerators`
+  - Add a PackageReference to `Theodicean.SourceGenerators`
   - Example `csproj` snippet:
 
     ```xml
     <ItemGroup>
-      <PackageReference Include="theodicean.SourceGenerators" Version="x.y.z" PrivateAssets="all" ExcludeAssets="runtime" />
+      <PackageReference Include="Theodicean.SourceGenerators" Version="x.y.z" PrivateAssets="all" ExcludeAssets="runtime" />
     </ItemGroup>
     ```
 
@@ -70,7 +70,7 @@ public enum ExampleEnum
 2) Declare a partial converter class and annotate it with `EnumJsonConverter`:
 
 ```csharp
-using theodicean.SourceGenerators;
+using Theodicean.SourceGenerators;
 
 [EnumJsonConverter(typeof(ExampleEnum), CaseSensitive = false, PropertyName = "error")]
 public partial class ExampleEnumJsonConverter;
