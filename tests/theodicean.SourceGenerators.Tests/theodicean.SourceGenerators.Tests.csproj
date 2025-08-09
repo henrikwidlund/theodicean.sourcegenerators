@@ -34,6 +34,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\src\theodicean.SourceGenerators.Attributes\theodicean.SourceGenerators.Attributes.csproj" />
       <ProjectReference Include="..\..\src\theodicean.SourceGenerators\theodicean.SourceGenerators.csproj" />
     </ItemGroup>
 
