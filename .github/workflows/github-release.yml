@@ -29,10 +29,10 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: Restore
-        run: dotnet restore ./net-dns.sln
+        run: dotnet restore ./theodicean.SourceGenerators.sln
 
       - name: Build
-        run: dotnet build ./net-dns.sln --configuration Release --no-restore
+        run: dotnet build ./theodicean.SourceGenerators.sln --configuration Release --no-restore
 
       - name: Compute package version from release tag
         shell: bash
@@ -47,8 +47,7 @@ jobs:
 
       - name: Pack libraries
         run: |
-          dotnet pack ./src/Dns/Dns.csproj --configuration Release --no-build --output ./artifacts -p:Version=$PACKAGE_VERSION
-          dotnet pack ./src/Mdns/Mdns.csproj --configuration Release --no-build --output ./artifacts -p:Version=$PACKAGE_VERSION
+          dotnet pack ./src/theodicean.SourceGenerators/theodicean.SourceGenerators.csproj --configuration Release --no-build --output ./artifacts -p:Version=$PACKAGE_VERSION
 
       - name: Publish to nuget.org
         env:

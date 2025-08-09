@@ -11,6 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{9CD8EDA6-C17C-488B-B463-CA5AAB7B16DB}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\qodana_code_quality.yml = .github\workflows\qodana_code_quality.yml
+		.github\workflows\github-release.yml = .github\workflows\github-release.yml
+		.github\workflows\dependency-review.yml = .github\workflows\dependency-review.yml
+		.github\workflows\ci.yml = .github\workflows\ci.yml
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theodicean.Generators", "src\theodicean.Generators\theodicean.Generators.csproj", "{B45903A7-3760-4946-854F-E663E225936E}"
 EndProject
