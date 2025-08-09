@@ -41,5 +41,9 @@
 
     <ItemGroup>
         <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+        <None Include="$(OutputPath)\theodicean.SourceGenerators.Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+        <None Include="$(OutputPath)\theodicean.SourceGenerators.Attributes.dll" Pack="true" PackagePath="lib\netstandard2.0" Visible="false" />
+        <None Include="$(OutputPath)\theodicean.SourceGenerators.Attributes.xml" Pack="true" PackagePath="lib\netstandard2.0" Visible="false" />
     </ItemGroup>
 </Project>
