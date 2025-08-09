@@ -8,6 +8,7 @@
         <RootNamespace>theodicean.Generators</RootNamespace>
         <IsTrimmable>false</IsTrimmable>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>

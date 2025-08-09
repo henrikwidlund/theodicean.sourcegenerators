@@ -8,6 +8,23 @@
         <LangVersion>latest</LangVersion>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <RootNamespace>theodicean.Generators</RootNamespace>
+
+        <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DebugType>full</DebugType>
+        <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
+        <PackageId>theodicean.SourceGenerators</PackageId>
+        <Authors>Henrik Widlund</Authors>
+        <Copyright>©2025 Henrik Widlund</Copyright>
+        <Title>JsonConverter for Enums</Title>
+        <Description>Source generators for generating fast, efficient and AoT friendly JsonConverters for Enums with custom names.</Description>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageReleaseNotes>https://github.com/henrikwidlund/theodicean.sourcegenerators/releases</PackageReleaseNotes>
+        <PackageTags>json enum aot generator</PackageTags>
+        <IncludeSymbols>True</IncludeSymbols>
+        <PackageProjectUrl>https://github.com/henrikwidlund/theodicean.sourcegenerators</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,5 +38,9 @@
 
     <ItemGroup>
       <ProjectReference Include="..\theodicean.Generators.Attributes\theodicean.Generators.Attributes.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\..\README.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 </Project>
