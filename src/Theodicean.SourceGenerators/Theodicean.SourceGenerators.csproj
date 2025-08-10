@@ -10,7 +10,6 @@
 
         <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <DebugType>full</DebugType>
         <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
         <PackageId>Theodicean.SourceGenerators</PackageId>
         <Authors>Henrik Widlund</Authors>
