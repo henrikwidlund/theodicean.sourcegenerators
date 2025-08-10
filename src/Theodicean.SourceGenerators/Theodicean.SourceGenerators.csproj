@@ -22,6 +22,8 @@
         <PackageTags>json enum aot generator</PackageTags>
         <IncludeSymbols>True</IncludeSymbols>
         <PackageProjectUrl>https://github.com/henrikwidlund/theodicean.sourcegenerators</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/henrikwidlund/theodicean.sourcegenerators.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
