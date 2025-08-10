@@ -7,6 +7,9 @@
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <LangVersion>latest</LangVersion>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <DebugType>portable</DebugType>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 
         <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -20,6 +23,7 @@
         <PackageReleaseNotes>https://github.com/henrikwidlund/theodicean.sourcegenerators/releases</PackageReleaseNotes>
         <PackageTags>json enum aot generator</PackageTags>
         <IncludeSymbols>True</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <PackageProjectUrl>https://github.com/henrikwidlund/theodicean.sourcegenerators</PackageProjectUrl>
         <RepositoryUrl>https://github.com/henrikwidlund/theodicean.sourcegenerators.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
