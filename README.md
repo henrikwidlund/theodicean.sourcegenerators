@@ -1,9 +1,9 @@
 # Theodicean.SourceGenerators
 
-[![Release](https://img.shields.io/github/actions/workflow/status/henrikwidlund/unfoldedcircle-adbtv/github-release.yml?label=Release&logo=github)](https://github.com/henrikwidlund/theodicean.sourcegenerators/actions/workflows/github-release.yml)
+[![Release](https://img.shields.io/github/actions/workflow/status/henrikwidlund/theodicean.sourcegenerators/github-release.yml?label=Release&logo=github)](https://github.com/henrikwidlund/theodicean.sourcegenerators/actions/workflows/github-release.yml)
 [![CI](https://img.shields.io/github/actions/workflow/status/henrikwidlund/theodicean.sourcegenerators/ci.yml?label=CI&logo=github)](https://github.com/henrikwidlund/theodicean.sourcegenerators/actions/workflows/ci.yml)
 ![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/henrikwidlund_theodicean.sourcegenerators?server=https%3A%2F%2Fsonarcloud.io&label=Sonar%20Quality%20Gate&logo=sonarqube)
-[![Qodana](https://img.shields.io/github/actions/workflow/status/henrikwidlund/unfoldedcircle-adbtv/qodana_code_quality.yml?branch=main&label=Qodana&logo=github)](https://github.com/henrikwidlund/theodicean.sourcegenerators/actions/workflows/qodana_code_quality.yml)
+[![Qodana](https://img.shields.io/github/actions/workflow/status/henrikwidlund/theodicean.sourcegenerators/qodana_code_quality.yml?branch=main&label=Qodana&logo=github)](https://github.com/henrikwidlund/theodicean.sourcegenerators/actions/workflows/qodana_code_quality.yml)
 [![Version](https://img.shields.io/nuget/v/Theodicean.Makaretu.Dns.Multicast.svg)](https://www.nuget.org/packages/Theodicean.Makaretu.Dns.Multicast)
 
 Source generator for fast, allocation-light System.Text.Json converters for enums, driven by attributes.
