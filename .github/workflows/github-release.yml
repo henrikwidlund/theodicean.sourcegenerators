@@ -29,10 +29,10 @@ jobs:
             ${{ runner.os }}-nuget-
 
       - name: Restore
-        run: dotnet restore ./Theodicean.SourceGenerators.sln
+        run: dotnet restore ./Theodicean.SourceGenerators.slnx
 
       - name: Build
-        run: dotnet build ./Theodicean.SourceGenerators.sln --configuration Release --no-restore
+        run: dotnet build ./Theodicean.SourceGenerators.slnx --configuration Release --no-restore
 
       - name: Compute package version from release tag
         shell: bash
