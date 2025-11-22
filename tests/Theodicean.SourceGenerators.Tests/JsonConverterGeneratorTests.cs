@@ -39,7 +39,7 @@ internal static class TestHelpers
     public static (ImmutableArray<Diagnostic> Diagnostics, string Output) GetGeneratedOutput<T>(string source)
         where T : IIncrementalGenerator, new()
     {
-        var syntaxTree = CSharpSyntaxTree.ParseText(source);
+        var syntaxTree = CSharpSyntaxTree.ParseText(source, cancellationToken: TestContext.Current.CancellationToken);
         var references = AppDomain.CurrentDomain.GetAssemblies()
             .Where(static assembly => !assembly.IsDynamic && !string.IsNullOrWhiteSpace(assembly.Location))
             .Select(static assembly => MetadataReference.CreateFromFile(assembly.Location))
@@ -59,7 +59,10 @@ internal static class TestHelpers
         var generator = new T();
 
         var driver = CSharpGeneratorDriver.Create(generator);
-        driver.RunGeneratorsAndUpdateCompilation(compilation, out var outputCompilation, out var diagnostics);
+        driver.RunGeneratorsAndUpdateCompilation(compilation,
+            out var outputCompilation,
+            out var diagnostics,
+            TestContext.Current.CancellationToken);
 
         var trees = outputCompilation.SyntaxTrees.ToList();
 
