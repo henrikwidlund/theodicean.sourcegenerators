@@ -71,7 +71,7 @@ public class JsonConverterGenerator : IIncrementalGenerator
             return null;
 
         var converterNamespace = converterType.ContainingNamespace.IsGlobalNamespace
-            ? string.Empty
+            ? enumTypeSymbol.ContainingNamespace.IsGlobalNamespace ? string.Empty : enumTypeSymbol.ContainingNamespace.ToString()
             : converterType.ContainingNamespace.ToString();
 
         var converterTypeName = converterType.Name;
