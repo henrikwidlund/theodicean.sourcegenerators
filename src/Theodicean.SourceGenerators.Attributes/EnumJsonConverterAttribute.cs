@@ -4,7 +4,7 @@
 /// Add to enums to indicate that a JsonConverter for the enum should be generated.
 /// </summary>
 /// <typeparam name="TEnum">The enum to generate the converter for.</typeparam>
-[AttributeUsage(AttributeTargets.Class)]
+[AttributeUsage(AttributeTargets.Enum)]
 public sealed class EnumJsonConverterAttribute<TEnum> : Attribute
     where TEnum : Enum
 {

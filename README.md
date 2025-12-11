@@ -65,6 +65,9 @@ Annotate a partial class with `EnumJsonConverterAttribute`, pointing to the enum
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
+using Theodicean.SourceGenerators;
+
+[EnumJsonConverter<ExampleEnum>(CaseSensitive = false, PropertyName = "error")]
 public enum ExampleEnum
 {
     None = 1,
@@ -73,18 +76,21 @@ public enum ExampleEnum
 }
 ```
 
-2) Declare a partial converter class and annotate it with `EnumJsonConverter`:
+2) Optionally declare a partial converter class where you want it in the same assembly as the enum:
 
 ```csharp
-using Theodicean.SourceGenerators;
-
-[EnumJsonConverter(typeof(ExampleEnum), CaseSensitive = false, PropertyName = "error")]
 public partial class ExampleEnumJsonConverter;
 ```
 
 3) Annotate your enum so that the converter is used.
 
 ```csharp
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+
+using Theodicean.SourceGenerators;
+
+[EnumJsonConverter<ExampleEnum>(CaseSensitive = false, PropertyName = "error")]
 [JsonConverter(typeof(ExampleEnumJsonConverter))]
 public enum ExampleEnum
 {

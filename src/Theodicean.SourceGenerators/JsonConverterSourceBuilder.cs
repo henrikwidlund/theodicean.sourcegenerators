@@ -16,7 +16,7 @@ public static class JsonConverterSourceBuilder
         /// Add to enums to indicate that a JsonConverter for the enum should be generated.
         /// </summary>
         /// <typeparam name="TEnum">The enum to generate the converter for.</typeparam>
-        [global::System.AttributeUsage(global::System.AttributeTargets.Class)]
+        [global::System.AttributeUsage(global::System.AttributeTargets.Enum)]
         public class EnumJsonConverterAttribute<TEnum> : global::System.Attribute
             where TEnum : global::System.Enum
         {
