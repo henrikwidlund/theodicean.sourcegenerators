@@ -21,7 +21,7 @@ public class JsonConverterGenerator : IIncrementalGenerator
         var jsonConvertersToGenerate = context.SyntaxProvider
             .ForAttributeWithMetadataName(
                 EnumJsonConverterAttribute,
-                static (node, _) => node is ClassDeclarationSyntax,
+                static (node, _) => node is EnumDeclarationSyntax,
                 GetTypeToGenerate)
             .Where(static m => m is not null);
 
@@ -41,18 +41,15 @@ public class JsonConverterGenerator : IIncrementalGenerator
 
     private static JsonConverterToGenerate? GetTypeToGenerate(GeneratorAttributeSyntaxContext context, CancellationToken ct)
     {
-        if (context.TargetSymbol is not INamedTypeSymbol classSymbol)
+        if (context.TargetSymbol is not INamedTypeSymbol enumSymbol)
         {
             // nothing to do if this type isn't available
             return null;
         }
 
         ct.ThrowIfCancellationRequested();
-        
-        var converterNamespace = classSymbol.ContainingNamespace.IsGlobalNamespace
-            ? string.Empty
-            : classSymbol.ContainingNamespace.ToString();
-        var attributes = classSymbol.GetAttributes();
+
+        var attributes = enumSymbol.GetAttributes();
         var enumJsonConverterAttribute = attributes.FirstOrDefault(static ad =>
             ad.AttributeClass?.Name.Equals("EnumJsonConverterAttribute", StringComparison.Ordinal) == true ||
             ad.AttributeClass?.ToDisplayString().Equals(EnumJsonConverterAttribute, StringComparison.Ordinal) == true);
@@ -63,11 +60,29 @@ public class JsonConverterGenerator : IIncrementalGenerator
         if (enumJsonConverterAttribute.AttributeClass.TypeArguments[0] is not { } enumTypeSymbol)
             return null;
 
+        var jsonConverterAttribute = attributes.FirstOrDefault(static ad =>
+            ad.AttributeClass?.Name.Equals("JsonConverterAttribute", StringComparison.Ordinal) == true ||
+            ad.AttributeClass?.ToDisplayString().Equals("System.Text.Json.Serialization.JsonConverterAttribute", StringComparison.Ordinal) == true);
+
+        if (jsonConverterAttribute is not { ConstructorArguments.Length: 1 })
+            return null;
+
+        if (jsonConverterAttribute.ConstructorArguments[0].Value is not INamedTypeSymbol converterType)
+            return null;
+
+        var converterNamespace = converterType.ContainingNamespace.IsGlobalNamespace
+            ? string.Empty
+            : converterType.ContainingNamespace.ToString();
+
+        var converterTypeName = converterType.Name;
+        if (string.IsNullOrEmpty(converterTypeName))
+            return null;
+
         ProcessNamedArguments(enumJsonConverterAttribute,
             out var caseSensitive,
             out var camelCase,
             out var propertyName);
-        
+
         var enumMembers = enumTypeSymbol.GetMembers();
         var members = new List<(string, EnumValueOption)>(enumMembers.Length);
         HashSet<string>? displayNames = null;
@@ -107,7 +122,7 @@ public class JsonConverterGenerator : IIncrementalGenerator
                 displayName = dn1;
                 break;
             }
-            
+
             if (displayName is not null)
             {
                 // Handle cases where contains a quote or a backslash
@@ -124,11 +139,11 @@ public class JsonConverterGenerator : IIncrementalGenerator
         {
             CamelCase = camelCase,
             CaseSensitive = caseSensitive,
-            ConverterType = classSymbol.Name,
+            ConverterType = converterTypeName,
             ConverterNamespace = converterNamespace,
             FullyQualifiedEnumName = enumTypeSymbol.ToString(),
             PropertyName = propertyName,
-            IsPublic = classSymbol.DeclaredAccessibility == Accessibility.Public,
+            IsPublic = enumSymbol.DeclaredAccessibility == Accessibility.Public,
             Members = members
         };
     }
