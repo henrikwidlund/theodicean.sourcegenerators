@@ -8,29 +8,34 @@ namespace Theodicean.SourceGenerators.Tests;
 public class JsonConverterGeneratorTests
 {
     [Test]
-    public async Task Attribute_Usage_Generates_Proper_Converter()
+    [Arguments(true)]
+    [Arguments(false)]
+    public async Task Attribute_Usage_Generates_Proper_Converter(bool separateConverterNameSpace)
     {
-        const string input = """
+        var input = $$"""
                              using System.Text.Json.Serialization;
                              using Theodicean.SourceGenerators;
 
                              namespace MyTestNameSpace
                              {
                                  [EnumJsonConverterAttribute<MyEnum>(CamelCase = false, CaseSensitive = false)]
-                                 internal partial class MyEnumConverter;
-                                 
-                                 [JsonConverter(typeof(MyEnumConverter))]
+                                 [JsonConverter(typeof({{(separateConverterNameSpace ? "MyConverterNameSpace." : "")}}MyEnumConverter))]
                                  internal enum MyEnum
                                  {
                                      First = 0,
                                      Second = 1
                                  }
                              }
+                             
+                             namespace MyConverterNameSpace
+                             {
+                                 public partial class MyEnumConverter;
+                             }
                              """;
         (ImmutableArray<Diagnostic> diagnostics, string output) = TestHelpers.GetGeneratedOutput<JsonConverterGenerator>(input);
 
         await Assert.That(diagnostics).IsEmpty();
-        await Verify(output).UseDirectory("Snapshots");
+        await Verify(output).UseTextForParameters(separateConverterNameSpace.ToString()).UseDirectory("Snapshots");
     }
 }
 

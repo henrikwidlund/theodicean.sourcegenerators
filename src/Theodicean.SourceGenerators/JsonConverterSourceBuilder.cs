@@ -83,7 +83,7 @@ public static class JsonConverterSourceBuilder
                     var charsWritten = reader.CopyString(charBuffer);
                     charBuffer = charBuffer[..charsWritten];
                     global::System.ReadOnlySpan<char> source = charBuffer.Trim();
-                    
+
                     try
                     {
                         return GetEnumValue(source);
