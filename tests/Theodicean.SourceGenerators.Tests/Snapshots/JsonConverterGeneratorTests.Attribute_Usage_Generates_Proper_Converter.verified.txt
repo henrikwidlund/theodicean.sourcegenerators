@@ -33,7 +33,8 @@ internal sealed partial class MyEnumConverter : global::System.Text.Json.Seriali
             : rentedBuffer = global::System.Buffers.ArrayPool<char>.Shared.Rent(bufferLength);
 
         var charsWritten = reader.CopyString(charBuffer);
-        global::System.ReadOnlySpan<char> source = charBuffer[..charsWritten];
+        charBuffer = charBuffer[..charsWritten];
+        global::System.ReadOnlySpan<char> source = charBuffer.Trim();
         
         try
         {

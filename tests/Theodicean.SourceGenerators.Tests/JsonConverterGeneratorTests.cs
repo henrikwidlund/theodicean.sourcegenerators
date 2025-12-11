@@ -16,7 +16,7 @@ public class JsonConverterGeneratorTests
 
                              namespace MyTestNameSpace
                              {
-                                 [EnumJsonConverterAttribute(typeof(MyEnum), CamelCase = false, CaseSensitive = false)]
+                                 [EnumJsonConverterAttribute<MyEnum>(CamelCase = false, CaseSensitive = false)]
                                  internal partial class MyEnumConverter;
                                  
                                  [JsonConverter(typeof(MyEnumConverter))]
@@ -45,7 +45,7 @@ internal static class TestHelpers
             .Select(static assembly => MetadataReference.CreateFromFile(assembly.Location))
             .Concat([
                 MetadataReference.CreateFromFile(typeof(T).Assembly.Location),
-                MetadataReference.CreateFromFile(typeof(EnumJsonConverterAttribute).Assembly.Location),
+                MetadataReference.CreateFromFile(typeof(EnumJsonConverterAttribute<>).Assembly.Location),
                 MetadataReference.CreateFromFile(typeof(System.ComponentModel.DataAnnotations.DisplayAttribute).Assembly.Location)
             ]);
 
