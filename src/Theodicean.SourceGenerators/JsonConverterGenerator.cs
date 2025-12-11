@@ -9,7 +9,7 @@ namespace Theodicean.SourceGenerators;
 [Generator]
 public class JsonConverterGenerator : IIncrementalGenerator
 {
-    private const string EnumJsonConverterAttribute = "Theodicean.SourceGenerators.EnumJsonConverterAttribute";
+    private const string EnumJsonConverterAttribute = "Theodicean.SourceGenerators.EnumJsonConverterAttribute`1";
     private const string DisplayAttribute = "System.ComponentModel.DataAnnotations.DisplayAttribute";
     private const string DescriptionAttribute = "System.ComponentModel.DescriptionAttribute";
 
@@ -57,10 +57,10 @@ public class JsonConverterGenerator : IIncrementalGenerator
             ad.AttributeClass?.Name.Equals("EnumJsonConverterAttribute", StringComparison.Ordinal) == true ||
             ad.AttributeClass?.ToDisplayString().Equals(EnumJsonConverterAttribute, StringComparison.Ordinal) == true);
 
-        if (enumJsonConverterAttribute is not { ConstructorArguments.Length: > 0 })
+        if (enumJsonConverterAttribute is not { AttributeClass.TypeArguments.Length: > 0 })
             return null;
 
-        if (enumJsonConverterAttribute.ConstructorArguments[0].Value is not INamedTypeSymbol enumTypeSymbol)
+        if (enumJsonConverterAttribute.AttributeClass.TypeArguments[0] is not { } enumTypeSymbol)
             return null;
 
         ProcessNamedArguments(enumJsonConverterAttribute,
