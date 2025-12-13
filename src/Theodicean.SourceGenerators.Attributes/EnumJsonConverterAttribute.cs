@@ -5,6 +5,7 @@
 /// </summary>
 /// <typeparam name="TEnum">The enum to generate the converter for.</typeparam>
 [AttributeUsage(AttributeTargets.Enum)]
+[System.Diagnostics.Conditional("THEODICEAN_GENERATORS_EMBED_ATTRIBUTES")]
 public sealed class EnumJsonConverterAttribute<TEnum> : Attribute
     where TEnum : Enum
 {

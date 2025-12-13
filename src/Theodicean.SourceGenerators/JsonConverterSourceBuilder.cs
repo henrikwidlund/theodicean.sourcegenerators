@@ -15,8 +15,9 @@ namespace Theodicean.SourceGenerators.JsonConverter
     /// <summary>
     /// Add to enums to indicate that a JsonConverter for the enum should be generated.
     /// </summary>
+    [global::System.Diagnostics.Conditional("THEODICEAN_GENERATORS_EMBED_ATTRIBUTES")]
     [global::System.AttributeUsage(global::System.AttributeTargets.Enum)]
-    public class EnumJsonConverterAttribute<TEnum> : global::System.Attribute
+    public sealed class EnumJsonConverterAttribute<TEnum> : global::System.Attribute
         where TEnum : Enum
     {
         /// <summary>
