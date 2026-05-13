@@ -9,7 +9,6 @@
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <DebugType>portable</DebugType>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 
         <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
