@@ -1,7 +1,12 @@
+using System;
 using System.Collections.Immutable;
+using System.Linq;
+using System.Threading.Tasks;
 
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+
+using VerifyTUnit;
 
 namespace Theodicean.SourceGenerators.Tests;
 
@@ -32,10 +37,10 @@ public class JsonConverterGeneratorTests
                                  public partial class MyEnumConverter;
                              }
                              """;
-        (ImmutableArray<Diagnostic> diagnostics, string output) = TestHelpers.GetGeneratedOutput<JsonConverterGenerator>(input);
+        var (diagnostics, output) = TestHelpers.GetGeneratedOutput<JsonConverterGenerator>(input);
 
         await Assert.That(diagnostics).IsEmpty();
-        await Verify(output).UseTextForParameters(separateConverterNameSpace.ToString()).UseDirectory("Snapshots");
+        await Verifier.Verify(output).UseTextForParameters(separateConverterNameSpace.ToString()).UseDirectory("Snapshots");
     }
 }
 

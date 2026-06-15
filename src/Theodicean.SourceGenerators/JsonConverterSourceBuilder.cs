@@ -63,7 +63,7 @@ namespace Theodicean.SourceGenerators.JsonConverter
         if (!string.IsNullOrEmpty(propertyName))
             sb.AppendLine($"""    private const string PropertyName = "{propertyName}";""")
                 .AppendLine();
-        
+
         sb.AppendLine($$"""
                 /// <inheritdoc />
                 /// <summary>
@@ -106,7 +106,7 @@ namespace Theodicean.SourceGenerators.JsonConverter
                     => writer.WriteStringValue(GetStringValue(value));
             """)
             .AppendLine();
-            
+
         sb.Append(
                 $"    private static global::{jsonConverterToGenerate.FullyQualifiedEnumName} GetEnumValue(in global::System.ReadOnlySpan<char> source)")
             .AppendLine()
@@ -123,7 +123,7 @@ namespace Theodicean.SourceGenerators.JsonConverter
                     sb.AppendLine($"""        if (source.Equals("{enumValueOption.DisplayName}".AsSpan(), {stringComparison}) ||""")
                         .AppendLine($"""            source.Equals("{enumMember}".AsSpan(), {stringComparison}))""");
                 }
-                
+
                 sb.AppendLine($"            return global::{jsonConverterToGenerate.FullyQualifiedEnumName}.{enumMember};")
                     .AppendLine();
             }
@@ -141,12 +141,12 @@ namespace Theodicean.SourceGenerators.JsonConverter
                 : """        throw new global::System.Text.Json.JsonException($"{source.ToString()} is not a valid value.", null, null, null);""");
         sb.AppendLine("    }")
             .AppendLine();
-        
+
         sb.AppendLine(
                 $"    private static string GetStringValue(in global::{jsonConverterToGenerate.FullyQualifiedEnumName} enumValue)")
             .AppendLine("        => enumValue switch")
             .AppendLine("        {");
-        
+
         foreach ((string enumMember, EnumValueOption enumValueOption) in jsonConverterToGenerate.Members)
         {
             sb.AppendLine($"""            global::{jsonConverterToGenerate.FullyQualifiedEnumName}.{enumMember} => "{enumValueOption.DisplayName ?? enumMember}",""");
@@ -154,7 +154,7 @@ namespace Theodicean.SourceGenerators.JsonConverter
 
         sb.AppendLine("            _ => throw new global::System.ArgumentOutOfRangeException(nameof(enumValue), enumValue, null)")
             .AppendLine("        };");
-        
+
         sb.AppendLine("}");
 
         return sb.ToString();
