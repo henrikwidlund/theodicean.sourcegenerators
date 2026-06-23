@@ -3,9 +3,9 @@ namespace Theodicean.SourceGenerators;
 public readonly record struct JsonConverterToGenerate(
     string ConverterType,
     string? ConverterNamespace,
-    bool IsPublic,
+    in bool IsPublic,
     string FullyQualifiedEnumName,
-    bool CaseSensitive,
-    bool CamelCase,
+    in bool CaseSensitive,
+    in bool CamelCase,
     string? PropertyName,
     List<(string EnumMember, EnumValueOption EnumValueOption)> Members);

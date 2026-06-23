@@ -37,7 +37,7 @@ public class JsonConverterGeneratorTests
                                  public partial class MyEnumConverter;
                              }
                              """;
-        var (diagnostics, output) = TestHelpers.GetGeneratedOutput<JsonConverterGenerator>(input);
+        (ImmutableArray<Diagnostic> diagnostics, string output) = TestHelpers.GetGeneratedOutput<JsonConverterGenerator>(input);
 
         await Assert.That(diagnostics).IsEmpty();
         await Verifier.Verify(output).UseTextForParameters(separateConverterNameSpace.ToString()).UseDirectory("Snapshots");
