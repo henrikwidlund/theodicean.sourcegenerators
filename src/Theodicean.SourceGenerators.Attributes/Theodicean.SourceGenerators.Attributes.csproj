@@ -17,11 +17,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Meziantou.Analyzer" Version="3.0.104">
+      <PackageReference Include="Meziantou.Analyzer" Version="3.0.123">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.300">
+      <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.301">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
