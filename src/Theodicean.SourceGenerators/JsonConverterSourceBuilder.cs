@@ -26,9 +26,9 @@ namespace Theodicean.SourceGenerators.JsonConverter
         public bool CaseSensitive { get; set; }
 
         /// <summary>
-        /// Indicates if the value of <see cref=""PropertyName""/> should be camel cased.
+        /// Indicates if the value of <see cref=""PropertyName""/> should be camel cased. Default is true.
         /// </summary>
-        public bool CamelCase { get; set; }
+        public bool CamelCase { get; set; } = true;
 
         /// <summary>
         /// If set, this value will be used in messages when there are problems with validation and/or serialization/deserialization occurs.

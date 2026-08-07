@@ -85,7 +85,6 @@ public class JsonConverterGenerator : IIncrementalGenerator
 
         var enumMembers = enumTypeSymbol.GetMembers();
         var members = new List<(string, EnumValueOption)>(enumMembers.Length);
-        HashSet<string>? displayNames = null;
 
         foreach (var member in enumMembers)
         {
@@ -129,7 +128,6 @@ public class JsonConverterGenerator : IIncrementalGenerator
                 displayName = displayName
                     .Replace(@"\", @"\\")
                     .Replace("\"", "\\\"");
-                displayNames ??= [];
             }
 
             members.Add((member.Name, new EnumValueOption(displayName)));
