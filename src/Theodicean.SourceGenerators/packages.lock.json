@@ -4,9 +4,9 @@
     ".NETStandard,Version=v2.0": {
       "Meziantou.Analyzer": {
         "type": "Direct",
-        "requested": "[3.0.144, )",
-        "resolved": "3.0.144",
-        "contentHash": "C61d/VFkm/68DnPPdH0+aLcewCOBzsAjaAhk+KRJZJLUvaOMu1ZJaZujuEo5sECtY3AM4CvHx0nkOV/d1LOBvw=="
+        "requested": "[3.0.177, )",
+        "resolved": "3.0.177",
+        "contentHash": "Un9RDShcg4kaNiQtNJvNaRQU5ogcFCB6YLSL2TLx49hmLSU+vd6YixciWxWmoKIOdGvPV27dqHHFIBm8qd5U1Q=="
       },
       "Microsoft.CodeAnalysis.CSharp": {
         "type": "Direct",
