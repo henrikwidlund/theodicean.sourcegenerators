@@ -143,7 +143,7 @@ namespace Theodicean.SourceGenerators.JsonConverter
             .AppendLine();
 
         sb.AppendLine(
-                $"    private static string GetStringValue(in global::{jsonConverterToGenerate.FullyQualifiedEnumName} enumValue)")
+                $"    private static string GetStringValue(global::{jsonConverterToGenerate.FullyQualifiedEnumName} enumValue)")
             .AppendLine("        => enumValue switch")
             .AppendLine("        {");
 

@@ -65,7 +65,7 @@ internal sealed partial class MyEnumConverter : global::System.Text.Json.Seriali
         throw new global::System.Text.Json.JsonException($"{source.ToString()} is not a valid value.", null, null, null);
     }
 
-    private static string GetStringValue(in global::MyTestNameSpace.MyEnum enumValue)
+    private static string GetStringValue(global::MyTestNameSpace.MyEnum enumValue)
         => enumValue switch
         {
             global::MyTestNameSpace.MyEnum.First => "First",
