@@ -54,7 +54,7 @@ internal sealed partial class MyEnumConverter : global::System.Text.Json.Seriali
     public override void Write(global::System.Text.Json.Utf8JsonWriter writer, global::MyTestNameSpace.MyEnum value, global::System.Text.Json.JsonSerializerOptions options)
         => writer.WriteStringValue(GetStringValue(value));
 
-    private static global::MyTestNameSpace.MyEnum GetEnumValue(in global::System.ReadOnlySpan<char> source)
+    private static global::MyTestNameSpace.MyEnum GetEnumValue(global::System.ReadOnlySpan<char> source)
     {
         if (source.Equals("First".AsSpan(), global::System.StringComparison.OrdinalIgnoreCase))
             return global::MyTestNameSpace.MyEnum.First;
