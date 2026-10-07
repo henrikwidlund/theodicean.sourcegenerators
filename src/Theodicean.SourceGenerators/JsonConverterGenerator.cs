@@ -95,6 +95,7 @@ public class JsonConverterGenerator : IIncrementalGenerator
             }
 
             string? displayName = null;
+            string? description = null;
             foreach (var attribute in member.GetAttributes())
             {
                 if (attribute.AttributeClass?.Name.Equals("DisplayAttribute", StringComparison.Ordinal) == true &&
@@ -105,22 +106,26 @@ public class JsonConverterGenerator : IIncrementalGenerator
                         if (!namedArgument.Key.Equals("Name", StringComparison.Ordinal) || namedArgument.Value.Value?.ToString() is not { } dn)
                             continue;
 
-                        // found display attribute, all done
                         displayName = dn;
                         break;
                     }
+
+                    // [Display(Name)] takes precedence over [Description], all done
+                    if (displayName is not null)
+                        break;
                 }
 
-                if (attribute.AttributeClass?.Name.Equals(DescriptionAttribute, StringComparison.Ordinal) != true
-                    || !attribute.AttributeClass.ToDisplayString().Equals("DescriptionAttribute", StringComparison.Ordinal)
-                    || attribute.ConstructorArguments.Length != 1
-                    || attribute.ConstructorArguments[0].Value?.ToString() is not { } dn1)
-                    continue;
-
-                // found display attribute, all done
-                displayName = dn1;
-                break;
+                if (description is null
+                    && attribute.AttributeClass?.Name.Equals("DescriptionAttribute", StringComparison.Ordinal) == true
+                    && attribute.AttributeClass.ToDisplayString().Equals(DescriptionAttribute, StringComparison.Ordinal)
+                    && attribute.ConstructorArguments.Length == 1
+                    && attribute.ConstructorArguments[0].Value?.ToString() is { } desc)
+                {
+                    description = desc;
+                }
             }
+
+            displayName ??= description;
 
             if (displayName is not null)
             {
